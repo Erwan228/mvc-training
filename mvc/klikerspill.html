@@ -12,6 +12,9 @@
         }
         body {
             background-image: url("images/blackShroud.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
         }
         
     </style>
@@ -63,7 +66,7 @@
         updateView();
         function updateView() {
 
-            var smiley = smileyIndex == 0 ? '<img src="/mvc/images/9140_Moogle.png">' : '<img src="/mvc/images/9141_Moogle.png">';
+            var smiley = smileyIndex == 0 ? '<img src="/images/9140_Moogle.png">' : '<img src="/images/9141_Moogle.png">';
             document.getElementById('app').innerHTML = /*HTML*/ `
                 <div id="image" onclick="doClick()">${smiley}</div>
                 <div id="pointsInfo">${points}</div>

@@ -7,42 +7,79 @@
 </head>
 
 <body>
-    Hva heter du? <br/>
-    <input 
-        id="nameInput" 
-        type="text" 
-    />
-    <br/>
+    <div id="app"></div>
+    
 
-    Hvor gammel er du? <br/>
-    <input 
-        id="ageInput" 
+    <script>
+        //Model
+        let personName;
+        let age = 20;
+        let jobNumber;
+        
+        //View
+        updateView()
+        function updateView() {
+            let nameTxt = personName ? `Hei, ${personName}!` : 'Fyll ut navn i tekstfeltet';
+            let ageTxt = age ? `Du er ${age} år gammel.` : 'Velg alder i slideren';
+            let jobTxt = personName ? `Din jobb er ${jobName}!` : 'Fyll inn navn for å bli tildelt en jobb.';
+                document.getElementById('app').innerHTML = /*HTML*/ `
+        Hva heter du? <br/>
+        <input 
+        type="text"
+        oninput="personName=this.value;"
+        value = "${personName || ''}"
+        >
+        <br>
+
+        Hvor gammel er du? <br/>
+        <input 
         type="range" 
         min="1" 
         max="120" 
         step="1" 
-        value="20"
-    /><br/>
+        oninput="age=this.value"
+        oninput="updateAge()"
+        value="${age}"
+    /> <br/>
     <button onclick="register()">Registrer</button>
 
     <h3>Se her:</h3>
     <hr/>
-    <div id="nameOutput"></div> 
+    <div>${nameTxt}</div> 
     <hr/>
-    <div id="ageOutput"></div>
+    <div>${ageTxt}</div>
     <hr/>
+    <div>${jobTxt}</div>
+    <hr>
+            `
+        }
+    
 
-    <script>
+        //Controller
+
         function register(){
-            var name = document.getElementById('nameInput').value;
-            document.getElementById('nameOutput').innerHTML = `
-                Hei, ${name}!
-                `;
+            jobNumber =  Math.floor(Math.random() * 19) + 1;
+            if (jobNumber == 1){jobName = "Paladin"}
+            else if(jobNumber == 2){jobName = "Gunbreaker"}
+            else if(jobNumber == 3){jobName = "Dark knight"}
+            else if(jobNumber == 4){jobName = "Warrior"}
+            else if(jobNumber == 5){jobName = "Reaper"}
+            else if(jobNumber == 6){jobName = "Ninja"}
+            else if(jobNumber == 7){jobName = "Samurai"}
+            else if(jobNumber == 8){jobName = "Monk"}
+            else if(jobNumber == 9){jobName = "Dragoon"}
+            else if(jobNumber == 10){jobName = "Bard"}
+            else if(jobNumber == 11){jobName = "Machinist"}
+            else if(jobNumber == 12){jobName = "Dancer"}
+            else if(jobNumber == 13){jobName = "Red mage"}
+            else if(jobNumber == 14){jobName = "Black mage"}
+            else if(jobNumber == 15){jobName = "Summoner"}
+            else if(jobNumber == 16){jobName = "Scholar"}
+            else if(jobNumber == 17){jobName = "White mage"}
+            else if(jobNumber == 18){jobName = "Astrologian"}
+            else{jobName = "Sage"}
+            updateView()
 
-            var age = document.getElementById('ageInput').value;
-            document.getElementById('ageOutput').innerHTML = `
-                Du er ${age} år gammel.
-                `;
         }
     </script>
 </body>
