@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            font-size: 300%;
+            user-select: none;
+            color: aliceblue;
+        }
+        body {
+            background-image: url("images/blackShroud.webp");
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+<script>
+        // model
+        var points = 0;
+        var pointsPerClick = 1;
+        var smileyIndex = 0;
+        let cheating = false;
+
+        // controller
+        function doClick() {
+            points += pointsPerClick;
+            smileyIndex = 1 - smileyIndex;
+            updateView();
+        }
+
+        function buyUpgrade() {
+            if (points < 10) return;
+            points -= 10;
+            pointsPerClick++;
+            updateView();
+        }
+        function buyUpgrade2() {
+            if (points < 100) return;
+            points -= 100;
+            pointsPerClick += 1000;
+            updateView();
+        }
+        function setDown(){
+            points = 0;
+            pointsPerClick = 1;
+            cheating = false;
+            updateView();
+        }
+        function cheat(){
+            points *= 10;
+            pointsPerClick *= 10;
+            cheating = true;
+            updateView();
+        }
+
+        // view
+        updateView();
+        function updateView() {
+
+            var smiley = smileyIndex == 0 ? '<img src="/mvc/images/9140_Moogle.png">' : '<img src="/mvc/images/9141_Moogle.png">';
+            document.getElementById('app').innerHTML = /*HTML*/ `
+                <div id="image" onclick="doClick()">${smiley}</div>
+                <div id="pointsInfo">${points}</div>
+                <button onclick="buyUpgrade()">Kjøp oppgradering (10 poeng)</button>
+                <button onclick="buyUpgrade2()">Kjøp større oppgradering (100 poeng)</button>
+                <button onclick="setDown()">Reset!</button>
+                <button onclick="cheat()">Don't press this button! (It's cheating)</button>
+                <div id="cheatDisplay"></div>
+            `;
+            if(cheating == true){
+                document.getElementById('cheatDisplay').innerHTML = "OI! You're cheating, kupo!";
+            }
+            else {document.getElementById('cheatDisplay').innerHTML = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
