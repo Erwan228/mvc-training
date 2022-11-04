@@ -30,6 +30,12 @@
 
             div.firstInRow {
                 clear: left;
+                background-image: url(/images/output-onlinepngtools.png);
+                background-size:cover;
+            }
+            div.number {
+                background-image: url(/images/output-onlinepngtools.png);
+                background-size:cover;
             }
     </style>
 </head>
@@ -47,18 +53,18 @@ document.getElementById('app').innerHTML=/*HTML*/ `
 <div class="resultBox" id="screen">${resultBox}</div>
 
     <div class="firstInRow" onclick="addCharacter(7)">7</div>
-    <div onclick="addCharacter(8)">8</div>
-    <div onclick="addCharacter(9)">9</div>
+    <div class="number" onclick="addCharacter(8)">8</div>
+    <div class="number" onclick="addCharacter(9)">9</div>
     <div onclick="addCharacter('/')">÷</div>
 
     <div class="firstInRow" onclick="addCharacter(4)">4</div>
-    <div onclick="addCharacter(5)">5</div>
-    <div onclick="addCharacter(6)">6</div>
+    <div class="number" onclick="addCharacter(5)">5</div>
+    <div class="number" onclick="addCharacter(6)">6</div>
     <div onclick="addCharacter('*')">×</div>
 
     <div class="firstInRow" onclick="addCharacter(1)">1</div>
-    <div onclick="addCharacter(2)">2</div>
-    <div onclick="addCharacter(3)">3</div>
+    <div class="number" onclick="addCharacter(2)">2</div>
+    <div class="number" onclick="addCharacter(3)">3</div>
     <div onclick="addCharacter('-')">-</div>
 
     <div class="firstInRow" onclick="addCharacter(0)">0</div>
